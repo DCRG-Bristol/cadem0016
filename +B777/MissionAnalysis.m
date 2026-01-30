@@ -14,7 +14,7 @@ ts = double.empty;
 
 % pick optimal altitude for cruise
 alts = linspace(15e3./SI.ft,44e3./SI.ft,61);
-[rho,a,~,~] = cast.atmos(alts);
+[rho,a,T,P] = cast.atmos(alts);
 % [rho_s,a_s,~,P_s] = dcrg.aero.atmos(0);
 M_cruise = ADP.TLAR.M_c;
 CL_c = EWF*M_TO*9.81./(1/2.*rho.*(a.*M_cruise).^2.*ADP.WingArea); % cruise C_L
