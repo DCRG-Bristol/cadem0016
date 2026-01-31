@@ -1,4 +1,4 @@
-function [ADP,out] = size(ADP)
+function [ADP,out] = Size(ADP)
 % interatively build the model, run mission analysis and estimate required
 %  MTOM untill covnergence
 delta = inf;
@@ -28,6 +28,8 @@ while delta>1
     ADP.Mf_res = ResFuel/ADP.MTOM;
     %estimate outut parameters
     out = struct();
-    out.FuelBurn = 
+    out.BlockFuel = BlockFuel;
+    out.DOC = BlockFuel*1;
+    out.ATR = BlockFuel;
 end
 end

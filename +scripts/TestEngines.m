@@ -60,23 +60,3 @@ title('TSFC Difference (Fan - Prop)');
 colorbar(ax3);
 clim(ax3, [-1e-5 1e-5]);
 colormap(ax3, redbluecmap);     % <--- set colormap for tile 3
-
-
-
-%% Mach and altitude grids
-M_veci   = linspace(0.1, 0.9, 5);      % Mach sweep
-alt_veci = linspace(0, 40e3 ./ SI.ft, 5); % altitude sweep (SI)
-
-[M_gridi, ALT_gridi] = meshgrid(M_veci, alt_veci);
-
-% Preallocate TSFC arrays
-TSFC_tpi = zeros(size(M_gridi));
-TSFC_tfi = zeros(size(M_gridi));
-
-% Evaluate TSFC across grid
-for i = 1:numel(M_gridi)
-    TSFC_tpi(i) = tp.TSFC(M_gridi(i), ALT_gridi(i));
-    TSFC_tfi(i) = tf.TSFC(M_gridi(i), ALT_gridi(i));
-end
-
-(TSFC_tfi-TSFC_tpi)*1e5

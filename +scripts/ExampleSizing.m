@@ -34,8 +34,7 @@ ADP.Mf_TOC = 0.97;  % mass at teh Top of Climb (TOC)
 
 % -------------------------------- Sizing --------------------------------
 % Note - see the "size" function at the bottum of this script
-ADP = size(ADP);
-
+ADP = B777.Size(ADP);
 
 %% build the "Sized" geometry and plot it
 [B7Geom,B7Mass] = B777.BuildGeometry(ADP); % get list of components geometries and masses
@@ -73,7 +72,7 @@ fuels = mtoms;
 % loop over spans and size aircraft for each span
 for i = 1:length(Spans)
     ADP.Span = Spans(i);
-    ADP = size(ADP);
+    ADP = B777.Size(ADP);
     mtoms(i) = ADP.MTOM;
     fuels(i) = ADP.Mf_Fuel*ADP.MTOM;
 end
